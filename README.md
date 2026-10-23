@@ -44,6 +44,10 @@ Five small skills for Claude Code. Each skill is one `SKILL.md` file. Together t
 - Report one finding per line, sorted by severity, with a fix marked safe or risky.
 - Edit nothing until you approve a fix.
 
+## Status line (optional)
+
+[`statusline/`](statusline/README.md) is not a skill. It is a script for the Claude Code status bar. It shows your active skills, the 5 h and 7 d usage limits, and context use. The folder has manual steps and a prompt that tells an agent to install it.
+
 ## Install
 
 ```sh
