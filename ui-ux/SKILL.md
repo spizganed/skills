@@ -8,7 +8,7 @@ description: If you start work on UI/UX (screen, layout, animation, interaction)
 ## Before you build
 - Name the one job of the screen. Put that action first and make it the most visible.
 - Reuse existing components, tokens, and patterns. Read them first. Do not add a style that has no match in the app.
-- Follow the platform: Material on Android, native feel on desktop. Do not copy a web pattern.
+- Follow the platform: Material on Android, native feel on desktop (egui in QuickBuds). Do not copy a web pattern.
 
 ## Consistency
 - Before you add a screen, read 2 sibling screens. List their paddings, type sizes, colors, radii, and components.
@@ -40,8 +40,7 @@ description: If you start work on UI/UX (screen, layout, animation, interaction)
 - Add a new animation only when no role fits. Add it to the shared set, then use it.
 - When you change a shared animation, check every screen that uses it.
 - Every state change and screen change has a transition. A snap is a bug.
-- Defaults if the app has none: press 100 ms, small change 150-200 ms, screen 250-300 ms. Ease-out in, ease-in out. Exit is shorter than enter.
-- Respect reduced motion.
+- Defaults if the app has none: press 100 ms, small change 150-200 ms, screen 250-300 ms. Use ease-out for entering motion. Use ease-in for exiting motion. Exit is shorter than enter.
 
 ## Words
 - Use verbs on buttons: "Save", not "OK". Keep labels short.

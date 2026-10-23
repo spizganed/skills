@@ -22,7 +22,7 @@ Applies to chat replies only. Write docs, commits, code comments, issues, and me
 ## Shape
 - Lead with the answer or the result. Then the next step.
 - Short sentences. One idea each.
-- No tables, emoji, or arrows for decoration. No new abbreviations.
+- No tables (unless the user asks), emoji, or arrows for decoration. No new abbreviations.
 
 ## Drop terse mode
 - Security warnings.

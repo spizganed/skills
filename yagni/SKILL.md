@@ -17,7 +17,7 @@ Build only what the task needs now. Do not build for a need that is only possibl
 - Write the smallest change that works. Do not add an abstraction, option, flag, or config for one use.
 - Do not add error handling for a case that cannot happen. Keep validation at trust boundaries.
 - Do not refactor code the task does not touch.
-- Keep a check for logic that can break: a branch, a loop, a parser, a security path.
+- Keep a test or an assertion for logic that can break: a branch, a loop, a parser, a security path.
 
 ## When you are unsure
 - Pick the simple default and say what you chose. Do not ask a question you can settle.
