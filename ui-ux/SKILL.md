@@ -34,10 +34,13 @@ description: Use only when you design, build, or change a user interface, screen
 - Respect system dark mode, font scale, and reduced motion.
 
 ## Motion
-- Every state change and screen change gets a transition. A snap is a bug.
-- Durations: press 100 ms, small change 150-200 ms, panel or screen 250-300 ms. Exit is shorter than enter.
-- Easing: ease-out for enter, ease-in for exit. Never linear except for spinners.
-- Move or fade only what changed. Keep one motion style across the app. Reuse existing duration and easing values.
+- Define each animation once, as a shared value or helper: duration, easing, and effect. Name it by role: press, toggle, screen enter, screen exit, list item, dialog.
+- Before you animate, search the app for that role. Reuse the shared animation. Do not write a new one.
+- Same kind of control, same animation, on every screen. All buttons press alike. All screen changes slide alike.
+- Add a new animation only when no role fits. Add it to the shared set, then use it.
+- When you change a shared animation, check every screen that uses it.
+- Every state change and screen change has a transition. A snap is a bug.
+- Defaults if the app has none: press 100 ms, small change 150-200 ms, screen 250-300 ms. Ease-out in, ease-in out. Exit is shorter than enter.
 - Respect reduced motion.
 
 ## Words
@@ -46,9 +49,3 @@ description: Use only when you design, build, or change a user interface, screen
 
 ## Check
 Run the UI. Look at it at the smallest and largest size. Report what you saw, not what you intended.
-
-To check motion, trigger the action and read its frames. Needs adb (`~/adb-fix.sh <port>` once per session):
-1. Run `bash ~/.claude/skills/ui-ux/act.sh "input tap X Y" 20 1.2 out.png`. Use `input swipe` for sliders and `input keyevent 4` for back.
-2. Read the sheet. Each frame has a time label. Only the action is shown.
-3. Check for jumps, flicker, wrong direction, and a wrong duration. Fix, then run again.
-For a desktop app, use `frames.sh` on an `ffmpeg -f x11grab -t 5 -i :0 a.mp4` recording.
