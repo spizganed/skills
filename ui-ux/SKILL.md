@@ -47,7 +47,8 @@ description: Use only when you design, build, or change a user interface, screen
 ## Check
 Run the UI. Look at it at the smallest and largest size. Report what you saw, not what you intended.
 
-To check motion, record the screen and read the frames:
-1. Record 3-5 s. On the phone, ask the user to use the built-in screen recorder, then use the newest `.mp4` under `/sdcard`. With adb: `adb shell screenrecord --time-limit 5 /sdcard/a.mp4`. Desktop: `ffmpeg -f x11grab -t 5 -i :0 a.mp4`.
-2. Run `bash ~/.claude/skills/ui-ux/frames.sh a.mp4 20`. Read the sheet.
-3. Check for jumps, flicker, wrong direction, and a wrong duration. Fix, then record again.
+To check motion, trigger the action and read its frames. Needs adb (`~/adb-fix.sh <port>` once per session):
+1. Run `bash ~/.claude/skills/ui-ux/act.sh "input tap X Y" 20 1.2 out.png`. Use `input swipe` for sliders and `input keyevent 4` for back.
+2. Read the sheet. Each frame has a time label. Only the action is shown.
+3. Check for jumps, flicker, wrong direction, and a wrong duration. Fix, then run again.
+For a desktop app, use `frames.sh` on an `ffmpeg -f x11grab -t 5 -i :0 a.mp4` recording.
