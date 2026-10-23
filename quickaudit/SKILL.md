@@ -10,12 +10,12 @@ Audit the target. Report findings. Propose fixes. Do not edit any file.
 
 ## Target
 
-- Use the argument as the target: a repo, a directory, a file, or a skill name.
-- With no argument, use the active repo: run `git rev-parse --show-toplevel` from the current directory.
-- If the current directory is not in a repo, use the current directory.
-- Confirm the target before you read anything. Use AskUserQuestion to show the selected repo path and the current branch (`git branch --show-current`).
-- Offer these options: "Use this repo and branch (Recommended)", "Choose another repo" (list the repos in `~/projects` and `~/misa` and `~/QuickBuds` that exist), "Choose another branch" (list `git branch --all`). The user can also type a path or branch in Other.
-- To audit another branch, do not switch the branch in the working tree. Use `git ls-tree` and `git show <branch>:<file>`, or `git worktree add` in the scratchpad directory.
+- If the user gave an argument, use it as the target: a repo, a directory, a file, or a skill name. Still confirm the branch.
+- With no argument, scan for repos first. Run `command find ~ -maxdepth 3 -name .git -not -path '*/.*/*'` and take the parent directories. Also include the repo of the current directory.
+- Step 1, repo: ask with AskUserQuestion which repo to audit. Offer the repo of the current directory first, marked "(Recommended)", then the other repos found. Show at most 4 options. Tell the user to type a path in Other for a repo that is not listed.
+- Step 2, branch: run `git branch --all` in the chosen repo. Ask with AskUserQuestion which branch to audit. Offer the current branch first, marked "(Recommended)", then the other branches. The user can type a branch in Other.
+- Do not read any file before the user answers both questions.
+- To audit a branch that is not checked out, do not switch the branch in the working tree. Use `git ls-tree` and `git show <branch>:<file>`, or `git worktree add` in the scratchpad directory.
 - Audit the whole repo, not only the changed files. Include code and .md files.
 - Read every tracked file. Use `git ls-files` to list them. Skip build output, lock files, and binaries.
 - Read a large repo in parts. Do not skip a directory.
