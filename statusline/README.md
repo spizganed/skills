@@ -8,7 +8,7 @@ YAGNI ● │ OOGA-BOGGA ● │ ASD-STE100 ● │ UI-UX ● │ QUICKAUDIT ●
 Opus 5.5 high │ ctx ██░░░░ 31% 62k/200k
 ```
 
-- **Row 1, skills.** Green: on. Red: off. Grey: not used yet.
+- **Row 1, skills.** Green: on. Red: you switched it off in `settings.json`. Grey: not used yet.
 - **Row 2, limits.** Usage of the 5 h and 7 d limits, with the time to reset. Claude.ai plans only.
 - **Row 3.** Model, effort, and context use in tokens.
 - Bars turn yellow at 60 % and red at 85 %.
@@ -31,7 +31,7 @@ Claude Code runs the command with `sh`, so your login shell (fish, zsh) does not
    ```
 3. Restart Claude Code.
 
-Edit `ALWAYS` and `ON_USE` at the top of the script to list your skills.
+Edit `ALWAYS` and `ON_USE` at the top of the script to list your skills, or set the variables `STATUSLINE_ALWAYS` and `STATUSLINE_ON_USE`. A skill that is not installed is not shown. Without `jq`, the bar shows "statusline: install jq".
 - `ALWAYS`: green while the skill file exists and `settings.json` does not set it to `"off"`.
 - `ON_USE`: grey until this session invokes the skill. Use it for skills that load on their own.
 
