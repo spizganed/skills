@@ -1,10 +1,10 @@
 ---
-name: quickaudit
-description: Audit code or .md files. Report findings and propose fixes. Run only when the user types /quickaudit.
+name: audit-repo
+description: Audit code or .md files. Report findings and propose fixes. Run only when the user types /audit-repo.
 disable-model-invocation: true
 ---
 
-# Quick audit
+# Audit repo
 
 Audit the target. Report findings. Propose fixes. Do not edit any file.
 

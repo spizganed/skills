@@ -3,7 +3,7 @@
 # Row 1: your skills, green when on. Row 2: 5 h and 7 d usage limits. Row 3: model, effort, context use.
 # Edit ALWAYS and ON_USE, or set STATUSLINE_ALWAYS and STATUSLINE_ON_USE. A skill that is not installed is not shown.
 ALWAYS="${STATUSLINE_ALWAYS-yagni ooga-bogga asd-ste100}"   # on while the skill file exists and settings.json does not switch it off
-ON_USE="${STATUSLINE_ON_USE-ui-ux quickaudit}"            # grey until this session invokes the skill, then green
+ON_USE="${STATUSLINE_ON_USE-ui-ux audit-repo audit-ui}"            # grey until this session invokes the skill, then green
 
 command -v jq >/dev/null 2>&1 || { echo "statusline: install jq"; exit 0; }
 in=$(cat)
