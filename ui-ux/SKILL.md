@@ -1,6 +1,6 @@
 ---
 name: ui-ux
-description: Use only when you design, build, or change a user interface, screen, layout, or interaction. Skip for logic, backend, and build work.
+description: If you start work on UI/UX (screen, layout, animation, interaction), load this skill first. Never load it for other work.
 ---
 
 # UI/UX
