@@ -15,6 +15,8 @@ Opus 5.5 high │ ctx ██░░░░ 31% 62k/200k
 
 ## Install by hand
 
+Works on Linux, macOS, Windows (Git Bash) and Termux. The script uses only bash 3.2 features, `grep -E` and `jq`.
+
 Needs `bash` and `jq` (1.6 or newer). Install `jq` with `sudo pacman -S jq` (Arch), `sudo apt install jq` (Debian, Ubuntu), `brew install jq` (macOS) or `pkg install jq` (Termux).
 Claude Code runs the command with `sh`, so your login shell (fish, zsh) does not matter. On Windows, run Claude Code with Git Bash on `PATH`.
 
