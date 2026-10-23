@@ -12,9 +12,11 @@ Audit the target. Report findings. Propose fixes. Do not edit any file.
 
 - If the user gave an argument, use it as the target: a repo, a directory, a file, or a skill name. Still confirm the branch.
 - With no argument, scan for repos first. Run `command find ~ -maxdepth 3 -name .git -not -path '*/.*/*'` and take the parent directories. Also include the repo of the current directory.
-- Step 1, repo: ask with AskUserQuestion which repo to audit. Offer the repo of the current directory first, marked "(Recommended)", then the other repos found. Show at most 4 options. Tell the user to type a path in Other for a repo that is not listed.
+- Step 1, repo: ask with AskUserQuestion which repo to audit. Offer the repo of the current directory first, marked "(Recommended)", then the other repos found. The picker holds 4 options at most. With more than 4 repos, show 3 and make the fourth "More repos...", then ask again with the next ones. The user can also type a path in Other.
 - Step 2, branch: run `git branch --all` in the chosen repo. Ask with AskUserQuestion which branch to audit. Offer the current branch first, marked "(Recommended)", then the other branches. The user can type a branch in Other.
-- Do not read any file before the user answers both questions.
+- Step 3, history: ask the commit history question from the section "Commit history (optional)". Ask it in the same series, right after the branch.
+- Use AskUserQuestion for every choice. It gives an arrow-key picker. Never ask the user to type a number or a name in plain chat.
+- Do not read any file before the user answers all questions.
 - To audit a branch that is not checked out, do not switch the branch in the working tree. Use `git ls-tree` and `git show <branch>:<file>`, or `git worktree add` in the scratchpad directory.
 - Audit the whole repo, not only the changed files. Include code and .md files.
 - Read every tracked file. Use `git ls-files` to list them. Skip build output, lock files, and binaries.
@@ -47,7 +49,7 @@ Audit the target. Report findings. Propose fixes. Do not edit any file.
 
 ## Commit history (optional)
 
-- Before you start, ask the user with AskUserQuestion: "Also scan the commit history for sensitive data?"
+- Ask this in step 3, after the branch. Ask the user with AskUserQuestion: "Also scan the commit history for sensitive data?"
 - Give two options: "No, current files only (Recommended)" and "Yes, scan the history". Note that the history scan costs more.
 - On yes, scan only for sensitive data. Do not review old code for bugs.
 - Use `git log -p` or `git log --all -S<pattern>` with narrow patterns. Do not read every diff in full.
