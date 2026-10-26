@@ -1,6 +1,6 @@
 # skills
 
-Six small skills for Claude Code. Each skill is one `SKILL.md` file. Together they cut wasted code, wasted words and UI drift.
+Six small skills for Claude Code and DeepSeek Harness. Each skill is one `SKILL.md` file. Together they cut wasted code, wasted words and UI drift.
 
 | Skill | Loads | What it makes Claude do |
 |---|---|---|
@@ -86,6 +86,22 @@ cp -r skills/{yagni,ooga-bogga,asd-ste100,ui-ux,audit-repo,audit-ui} ~/.claude/s
 Restart Claude Code. Install only the skills you want: each folder works alone.
 
 To update, run `git pull` and copy the folders again.
+
+### DeepSeek Harness (dsh)
+
+The `SKILL.md` files work in [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) with no change. Run the installer:
+
+```sh
+git clone https://github.com/spizganed/skills.git
+skills/dsh/install.sh
+```
+
+- dsh has no switch that loads a skill in every session. The installer puts `yagni`, `ooga-bogga` and `asd-ste100` into `~/.dsh/AGENTS.md`, which every session reads.
+- It copies `ui-ux`, `audit-repo` and `audit-ui` to `~/.dsh/skills`. dsh loads `ui-ux` on UI work. The audit skills load only on `/audit-repo` and `/audit-ui`.
+- It replaces only its own block in `AGENTS.md`. Your other lines stay.
+- `DSH_HOME` sets another dsh home. To update, run `git pull` and the installer again.
+
+Tested with dsh 0.2.1-rc.2.
 
 ## How a skill loads
 
