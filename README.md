@@ -7,7 +7,7 @@ Six small skills for Claude Code and DeepSeek Harness. Each skill is one `SKILL.
 | [`yagni`](yagni/SKILL.md) | Any coding task | Build only what the task needs. Reuse code that exists. Fix the cause, not the symptom. |
 | [`ooga-bogga`](ooga-bogga/SKILL.md) | Every chat reply | Answer first. Cut filler, pleasantries and recaps. Keep code and numbers exact. |
 | [`asd-ste100`](asd-ste100/SKILL.md) | Any writing task | Write docs, commits and comments in Simplified Technical English. |
-| [`ui-ux`](ui-ux/SKILL.md) | UI work only | Copy sibling screens, reuse tokens and animations, build every state. |
+| [`ui-ux`](ui-ux/SKILL.md) | UI work (screens, themes, layouts, animation) | Copy sibling screens, use shared tokens, build every state. Android first (Material 3), also iOS and web. |
 | [`audit-repo`](audit-repo/SKILL.md) | Only on `/audit-repo` | Audit a repo for bugs, doc errors and sensitive data. Report fixes. Edit nothing. |
 | [`audit-ui`](audit-ui/SKILL.md) | Only on `/audit-ui` | Audit a UI against the `ui-ux` rules: quick by default (6 images), full on request. Report fixes. Edit nothing. |
 
@@ -65,7 +65,7 @@ The source is [`examples/mock.html`](examples/mock.html).
 
 ![Annotated findings](examples/audit-ui-annotated.png)
 
-The full report is [`examples/audit-ui-report.md`](examples/audit-ui-report.md).
+The full report is [`examples/audit-ui-report.md`](examples/audit-ui-report.md). It comes from the earlier, deeper version of the audit. The report format is the same.
 
 ## Status line (optional)
 
