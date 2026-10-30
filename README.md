@@ -9,7 +9,7 @@ Six small skills for Claude Code and DeepSeek Harness. Each skill is one `SKILL.
 | [`asd-ste100`](asd-ste100/SKILL.md) | Any writing task | Write docs, commits and comments in Simplified Technical English. |
 | [`ui-ux`](ui-ux/SKILL.md) | UI work only | Copy sibling screens, reuse tokens and animations, build every state. |
 | [`audit-repo`](audit-repo/SKILL.md) | Only on `/audit-repo` | Audit a repo for bugs, doc errors and sensitive data. Report fixes. Edit nothing. |
-| [`audit-ui`](audit-ui/SKILL.md) | Only on `/audit-ui` | Check screenshots, a recording or a URL against the `ui-ux` rules. Report fixes. Edit nothing. |
+| [`audit-ui`](audit-ui/SKILL.md) | Only on `/audit-ui` | Audit a UI against the `ui-ux` rules: quick by default (6 images), full on request. Report fixes. Edit nothing. |
 
 ## What each skill does
 
@@ -32,12 +32,12 @@ Six small skills for Claude Code and DeepSeek Harness. Each skill is one `SKILL.
 
 **ui-ux**
 - Name the one job of the screen. Make that action the most visible.
-- Read 2 sibling screens and copy their spacing, type and colors.
+- Read 2 sibling screens and copy their spacing, type and colors. Use the shared tokens, never a literal value.
 - Define each animation once by role (press, toggle, screen enter). Reuse it everywhere.
 - Build all states: default, pressed, focus, disabled, loading, empty, error.
-- Base rules on the Apple Human Interface Guidelines. Exact values are in `references/hig.md`. Contrast 4.5:1 or more. Touch targets 44 pt or 48 dp or more.
+- Follow the platform: Material 3 on Android, the HIG on iOS. Values are in `references/platforms.md`.
+- Contrast 4.5:1 or more. Touch targets 48 dp (44 pt on iOS). Text grows to 200 percent.
 - Render the final content first, then animate once. Clip rounded shapes cleanly.
-- Run the UI at the smallest and largest size. Report what you saw.
 
 **audit-repo**
 - Ask for the repo, the branch and the history scan with a picker.
@@ -47,14 +47,9 @@ Six small skills for Claude Code and DeepSeek Harness. Each skill is one `SKILL.
 - Edit nothing until you approve a fix.
 
 **audit-ui**
-- Take screenshots, a recording or a URL. Judge only what you have seen.
-- Check each `ui-ux` rule: job, consistency, layout, targets, states, contrast, content, sizes, motion.
-- Zoom in for pixelated or square backgrounds on rounded shapes, blurry assets, mixed icons and odd switches or sliders.
-- Split a recording into frames to find a refresh flash before an animation, and two animations that fight.
-- Measure values from the image. Cite them: `contrast 3.1:1, needs 4.5:1`.
-- Capture a matrix: light, dark and Increase Contrast; default and 200 percent text; small and large windows; empty, long, error and loading content.
-- Operate the controls: tap, toggle, drag. Check each result.
-- Measure with `measure.py`: contrast, target size, square corners, sharpness and refresh flash. Capture steps are in `capture.md`.
+- Quick by default: at most 6 images of one screen (light, dark, 200 percent text, empty, error, keyboard). Add `full` for the whole matrix.
+- Run the cheap checks first. On Android, [whiskerADB](https://github.com/spizganed/whiskerADB) `pp audit` finds small targets and unlabeled controls with no image.
+- Cite measured values: `contrast 3.1:1, needs 4.5:1`.
 - Report one finding per line with evidence, a severity and a fix. Skip findings in `.audit-ui-baseline.md`.
 - Edit nothing until you approve a fix. Then capture again and confirm.
 
